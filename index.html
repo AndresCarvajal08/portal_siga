@@ -54,7 +54,7 @@
           </div>
         </div>
         <div class="process-files">
-          <button class="file-chip" onclick="openDocumentModal('Proceso Gestión Comercial', [{name: 'Procedimiento', type: 'PDF', link: 'https://drive.google.com'}, {name: 'Instructivo', type: 'PDF', link: 'https://drive.google.com'}, {name: 'Manual', type: 'PDF', link: 'https://drive.google.com'}])"><span class="file-icon">📋</span>Documentos</button>
+          <button class="file-chip"><span class="file-icon">📋</span>Documentos</button>
         </div>
       </div>
 
@@ -376,13 +376,13 @@
 
 <!-- MODAL DE DOCUMENTOS -->
 <div id="documentModal" class="modal">
-  <div class="modal-content">
+  <div class="modal-content" style="max-width: 900px;">
     <div class="modal-header">
       <h2 id="modalTitle">Documentos</h2>
       <button class="modal-close" onclick="closeDocumentModal()">×</button>
     </div>
-    <div class="document-list" id="documentList">
-      <!-- Los documentos se cargan aquí dinámicamente -->
+    <div id="documentList">
+      <p>Cargando contenido...</p>
     </div>
   </div>
 </div>
