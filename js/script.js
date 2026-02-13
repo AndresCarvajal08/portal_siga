@@ -32,7 +32,7 @@ function openDocumentModal(processName, documentsData) {
   const modalTitle = document.getElementById('modalTitle');
   const documentList = document.getElementById('documentList');
   
-  modalTitle.textContent = `Documentos: ${processName}`;
+  modalTitle.textContent = `Listado Maestro de Documentos ${processName}`;
   documentList.innerHTML = '';
   
   documentsData.forEach(doc => {
