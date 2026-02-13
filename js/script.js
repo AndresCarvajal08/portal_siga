@@ -212,7 +212,7 @@ function openTemplateModal(folderId, folderName) {
   }
 
   modal.classList.add('active');
-  loadFolderContents(folderId, folderName);
+  loadFolderContents(folderId, folderName, [], false);
 }
 
 function closeTemplateModal() {
