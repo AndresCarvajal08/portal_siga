@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plantillas - SIGA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Estilos específicos para la página de plantillas */
+    .template-hero {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .template-hero h1 {
+      font-size: 2.2rem;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 0.5rem;
+      font-weight: 800;
+    }
+
+    .template-hero p {
+      font-size: 1rem;
+      opacity: 0.95;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .templates-section {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .templates-section h2 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .templates-section h2::before {
+      content: "✦";
+      color: var(--accent);
+      font-size: 1.5rem;
+    }
+
+    .template-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .template-item {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      border: 2px solid var(--gray-light);
+      transition: var(--transition);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 31, 120, 0.08);
+    }
+
+    .template-item:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 24px rgba(230, 179, 42, 0.2);
+      transform: translateY(-6px);
+    }
+
+    .template-icon-large {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin: 0 auto;
+    }
+
+    .template-item h3 {
+      font-size: 1.1rem;
+      color: var(--primary);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .template-item p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      flex-grow: 1;
+      line-height: 1.5;
+    }
+
+    .template-download {
+      background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .template-download:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(230, 179, 42, 0.3);
+    }
+
+    /* Modal de plantillas */
+    .template-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      overflow-y: auto;
+    }
+
+    .template-modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .template-modal-content {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 900px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .template-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--gray-light);
+      padding-bottom: 1rem;
+    }
+
+    .template-modal-header h2 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+
+    .template-modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gray);
+      transition: var(--transition-fast);
+    }
+
+    .template-modal-close:hover {
+      color: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    #templateModalContent {
+      min-height: 200px;
+    }
+
+    .templates-info {
+      background: linear-gradient(135deg, rgba(31, 58, 138, 0.05), rgba(230, 179, 42, 0.05));
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .templates-info h3 {
+      color: var(--primary);
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 0.5rem;
+    }
+
+    .templates-info p {
+      color: var(--gray);
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .template-hero h1 {
+        font-size: 1.6rem;
+      }
+
+      .template-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .templates-section h2 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="logo-area">
+      <div class="logo-box">
+        <img src="Imagenes/SIGA.jpg" alt="Logo SIGA">
+      </div>
+      <div style="color: rgba(255,255,255,0.85);">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:1rem; color:white;">Angiografía de Occidente SA</div>
+        <div style="font-size:0.82rem; margin-top:4px;">Plantillas y Documentos Base</div>
+      </div>
+    </div>
+    <nav class="nav-bar">
+      <a href="index.html">Procesos</a>
+      <a href="templates.html" class="active">Plantillas</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO SECTION -->
+  <div style="max-width: 1400px; margin: 0 auto; padding: 2rem;">
+    <div class="template-hero">
+      <h1>Plantillas Institucionales</h1>
+      <p>Accede a todas las plantillas aprobadas para la construcción de documentos organizacionales. Descárgalas, personalízalas y utilízalas en tus proyectos.</p>
+    </div>
+  </div>
+
+  <!-- CONTENIDO -->
+  <div class="templates-section">
+
+    <div class="templates-info">
+      <h3>📋 Cómo usar estas plantillas</h3>
+      <p>Todas las plantillas están diseñadas con los estándares institucionales de SIGA. Descárgalas, mantén la identidad visual y personaliza el contenido según tus necesidades.</p>
+    </div>
+
+    <h2>Plantillas de Documentos</h2>
+    <div class="template-grid" id="templatesList">
+      <div class="template-item" aria-live="polite">
+        <div class="template-icon-large">...</div>
+        <h3>Cargando plantillas</h3>
+        <p>Conectando con Google Drive para listar los documentos.</p>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- MODAL DE PLANTILLAS -->
+<div id="templateListModal" class="template-modal">
+  <div class="template-modal-content">
+    <div class="template-modal-header">
+      <h2 id="templateModalTitle">Plantillas</h2>
+      <button class="template-modal-close" onclick="closeTemplateModal()">✕</button>
+    </div>
+    <div id="templateModalContent">
+      <p>Cargando contenido...</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>SIGA &mdash; Sistema de Gestión Integrado de Angiografía &bull; <strong>Angiografía de Occidente SA</strong></p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
