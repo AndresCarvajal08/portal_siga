@@ -294,6 +294,19 @@
   </div>
 </div>
 
+<!-- MODAL DE VISTA PREVIA -->
+<div id="documentViewerModal" class="modal">
+  <div class="modal-content" style="max-width: 95vw; width: 95vw; height: 95vh; max-height: 95vh;">
+    <div class="modal-header">
+      <h2 id="viewerTitle">Vista Previa</h2>
+      <button class="modal-close" onclick="closeDocumentViewer()">×</button>
+    </div>
+    <div style="height: calc(100% - 70px); overflow: hidden;">
+      <iframe id="documentViewerFrame" style="width: 100%; height: 100%; border: none;" frameborder="0" sandbox="allow-scripts allow-same-origin"></iframe>
+    </div>
+  </div>
+</div>
+
 <footer>
   <p>SIGA &mdash; Sistema de Gestión Integrado de Angiografía &bull; <strong>Angiografía de Occidente SA</strong></p>
 </footer>
